@@ -1,3 +1,6 @@
+## next [????.??.??]
+* Require `th-abstraction-0.3.0.0` or later.
+
 ## 5.1
 * Export gfutu
 * `distGHisto`, `ghisto`, and `gchrono` now use `Cofree (Base t)`

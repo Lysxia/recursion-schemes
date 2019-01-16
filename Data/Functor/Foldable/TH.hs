@@ -121,14 +121,14 @@ toFName = mkName . f . nameBase
 
 makePrimForDI :: BaseRules -> DatatypeInfo -> DecsQ
 makePrimForDI rules
-  (DatatypeInfo { datatypeName    = tyName
-                , datatypeVars    = vars
-                , datatypeCons    = cons
-                , datatypeVariant = variant }) = do
+  (DatatypeInfo { datatypeName      = tyName
+                , datatypeInstTypes = instTys
+                , datatypeCons      = cons
+                , datatypeVariant   = variant }) = do
     when isDataFamInstance $
       fail "makeBaseFunctor: Data families are currently not supported."
     makePrimForDI' rules (variant == Newtype) tyName
-                   (map toTyVarBndr vars) cons
+                   (map toTyVarBndr instTys) cons
   where
     isDataFamInstance = case variant of
                           DataInstance    -> True
